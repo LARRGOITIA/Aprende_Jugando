@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Escuelita Divertida</title>
+    <link id="theme-link" rel="stylesheet" href="styles-v2.css">
+    <style>
+        .theme-switcher {
+            margin-top: 14px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .theme-btn {
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            border-radius: 999px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.26);
+        }
+
+        .theme-btn.active {
+            background: rgba(255, 255, 255, 0.96);
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎈 ¡Aprende Jugando! 🎈</h1>
+        <p>Colores y Números para niños</p>
+        <div class="theme-switcher" aria-label="Selector de tema">
+            <button class="theme-btn" data-theme="styles-v2.css" type="button">Tema v2</button>
+            <button class="theme-btn" data-theme="styles-v3.css" type="button">Tema v3</button>
+            <button class="theme-btn" data-theme="styles-v4.css" type="button">Tema v4</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <h2>🎨 Los Colores</h2>
+        <div class="grid-colores">
+            <div class="color-card" style="background-color: #FF0000;">Rojo</div>
+            <div class="color-card" style="background-color: #0000FF;">Azul</div>
+            <div class="color-card" style="background-color: #008000;">Verde</div>
+            <div class="color-card" style="background-color: #FFFF00; color: black;">Amarillo</div>
+            <div class="color-card" style="background-color: #FF8C00;">Naranja</div>
+            <div class="color-card" style="background-color: #800080;">Morado</div>
+        </div>
+
+        <hr>
+
+        <h2>🔢 Los Números</h2>
+        <div class="grid-numeros">
+            <div class="numero-card">1</div>
+            <div class="numero-card">2</div>
+            <div class="numero-card">3</div>
+            <div class="numero-card">4</div>
+            <div class="numero-card">5</div>
+            <div class="numero-card">6</div>
+            <div class="numero-card">7</div>
+            <div class="numero-card">8</div>
+            <div class="numero-card">9</div>
+            <div class="numero-card">10</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Creado para aprender de forma divertida ✨</p>
+    </footer>
+
+    <script>
+        (function () {
+            var STORAGE_KEY = "escuelita-theme";
+            var themeLink = document.getElementById("theme-link");
+            var buttons = document.querySelectorAll(".theme-btn");
+            var allowedThemes = ["styles-v2.css", "styles-v3.css", "styles-v4.css"];
+
+            function setActiveButton(theme) {
+                buttons.forEach(function (button) {
+                    var isActive = button.getAttribute("data-theme") === theme;
+                    button.classList.toggle("active", isActive);
+                    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+                });
+            }
+
+            function applyTheme(theme) {
+                if (allowedThemes.indexOf(theme) === -1) {
+                    return;
+                }
+                themeLink.setAttribute("href", theme);
+                localStorage.setItem(STORAGE_KEY, theme);
+                setActiveButton(theme);
+            }
+
+            var savedTheme = localStorage.getItem(STORAGE_KEY);
+            var initialTheme = allowedThemes.indexOf(savedTheme) !== -1 ? savedTheme : themeLink.getAttribute("href");
+            applyTheme(initialTheme);
+
+            buttons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    applyTheme(button.getAttribute("data-theme"));
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
