@@ -1,0 +1,249 @@
+:root {
+    --bg-deep: #14213d;
+    --bg-mid: #1f3b73;
+    --bg-light: #2b56a5;
+    --text-main: #f7fbff;
+    --text-soft: #d7e7ff;
+    --line: rgba(255, 255, 255, 0.24);
+    --chip-a: #ff6b35;
+    --chip-b: #2ec4b6;
+    --chip-c: #ffbf69;
+    --chip-d: #7bd389;
+    --shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text-main);
+    text-align: center;
+    font-family: "Verdana", "Trebuchet MS", sans-serif;
+    background:
+        radial-gradient(circle at 8% 18%, rgba(255, 107, 53, 0.22), transparent 24%),
+        radial-gradient(circle at 90% 14%, rgba(46, 196, 182, 0.22), transparent 24%),
+        linear-gradient(155deg, var(--bg-deep) 0%, var(--bg-mid) 55%, var(--bg-light) 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 16px 24px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(8px);
+}
+
+h1 {
+    margin: 0;
+    font-family: "Impact", "Arial Black", sans-serif;
+    font-size: clamp(2.1rem, 6vw, 3.8rem);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+
+header p {
+    margin: 10px 0 0;
+    color: var(--text-soft);
+    font-size: 1rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 26px 18px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    margin: 34px 0 16px;
+    font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+    color: #f4f9ff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.grid-colores,
+.grid-numeros {
+    display: grid;
+    gap: 16px;
+}
+
+.grid-colores {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    margin-bottom: 42px;
+}
+
+.grid-numeros {
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+.color-card {
+    height: 154px;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.34);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    transform: skewY(-1.2deg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.color-card:nth-child(even) {
+    transform: skewY(1.2deg);
+}
+
+.color-card:hover {
+    transform: translateY(-6px) skewY(0deg) scale(1.03);
+    box-shadow: 0 20px 36px rgba(0, 0, 0, 0.36);
+    filter: brightness(1.08);
+}
+
+.numero-card {
+    width: 86px;
+    height: 86px;
+    margin: 0 auto;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Impact", "Arial Black", sans-serif;
+    font-size: 2.05rem;
+    color: #0e2246;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.numero-card:nth-child(4n + 1) {
+    background: linear-gradient(135deg, #ffffff, var(--chip-a));
+}
+
+.numero-card:nth-child(4n + 2) {
+    background: linear-gradient(135deg, #ffffff, var(--chip-b));
+}
+
+.numero-card:nth-child(4n + 3) {
+    background: linear-gradient(135deg, #ffffff, var(--chip-c));
+}
+
+.numero-card:nth-child(4n) {
+    background: linear-gradient(135deg, #ffffff, var(--chip-d));
+}
+
+.numero-card:hover {
+    transform: translateY(-4px) scale(1.07);
+    box-shadow: 0 20px 32px rgba(0, 0, 0, 0.34);
+}
+
+hr {
+    border: none;
+    height: 2px;
+    margin: 34px auto;
+    max-width: 760px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.56), transparent);
+}
+
+footer {
+    padding: 14px 16px 30px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 20px 12px 32px;
+    }
+
+    .grid-colores {
+        gap: 12px;
+    }
+
+    .color-card {
+        height: 124px;
+        font-size: 1.2rem;
+    }
+
+    .numero-card {
+        width: 74px;
+        height: 74px;
+        font-size: 1.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    header,
+    .container {
+        animation: floatIn 0.65s ease both;
+    }
+
+    .color-card,
+    .numero-card {
+        animation: tileIn 0.5s ease both;
+    }
+
+    .color-card:nth-child(1) { animation-delay: 0.04s; }
+    .color-card:nth-child(2) { animation-delay: 0.08s; }
+    .color-card:nth-child(3) { animation-delay: 0.12s; }
+    .color-card:nth-child(4) { animation-delay: 0.16s; }
+    .color-card:nth-child(5) { animation-delay: 0.2s; }
+    .color-card:nth-child(6) { animation-delay: 0.24s; }
+
+    .numero-card:nth-child(1) { animation-delay: 0.06s; }
+    .numero-card:nth-child(2) { animation-delay: 0.09s; }
+    .numero-card:nth-child(3) { animation-delay: 0.12s; }
+    .numero-card:nth-child(4) { animation-delay: 0.15s; }
+    .numero-card:nth-child(5) { animation-delay: 0.18s; }
+    .numero-card:nth-child(6) { animation-delay: 0.21s; }
+    .numero-card:nth-child(7) { animation-delay: 0.24s; }
+    .numero-card:nth-child(8) { animation-delay: 0.27s; }
+    .numero-card:nth-child(9) { animation-delay: 0.3s; }
+    .numero-card:nth-child(10) { animation-delay: 0.33s; }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tileIn {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
