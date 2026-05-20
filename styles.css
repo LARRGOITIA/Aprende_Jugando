@@ -1,0 +1,128 @@
+:root {
+    --primary: #ff6b6b;
+    --secondary: #4ecdc4;
+    --accent: #ffe66d;
+    --bg: #f7f7f7;
+    --text: hsl(0, 66%, 33%);
+    --muted: #777777;
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+    margin: 0;
+    text-align: center;
+    color: var(--text);
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), #ff8a5b);
+    color: white;
+    padding: 24px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+}
+
+h2 {
+    color: var(--text);
+    margin-top: 40px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.grid-colores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.color-card {
+    height: 150px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+}
+
+.color-card:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.grid-numeros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.numero-card {
+    background-color: white;
+    border: 4px solid var(--secondary);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: auto;
+    color: var(--text);
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.numero-card:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+hr {
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.08);
+    margin: 32px 0;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 16px;
+    }
+
+    .color-card {
+        height: 130px;
+        font-size: 1.25rem;
+    }
+
+    .numero-card {
+        width: 72px;
+        height: 72px;
+        font-size: 1.75rem;
+    }
+}
