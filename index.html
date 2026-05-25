@@ -4,37 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Escuelita Divertida</title>
-    <link id="theme-link" rel="stylesheet" href="styles-v5.css">
-    <style>
-        .theme-switcher {
-            margin-top: 14px;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .theme-btn {
-            border: 2px solid rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.15s ease, background-color 0.15s ease;
-        }
-
-        .theme-btn:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.26);
-        }
-
-        .theme-btn.active {
-            background: rgba(255, 255, 255, 0.96);
-            color: #1f2937;
-        }
-    </style>
+    <link id="theme-link" rel="stylesheet" href="style-v7.css">
+    <link rel="stylesheet" href="movimiento.css">
 </head>
 <body>
 
@@ -42,6 +13,7 @@
         <h1>🎈 ¡Aprende Jugando! 🎈</h1>
         <p>Colores y Números para niños</p>
         <div class="theme-switcher" aria-label="Selector de tema">
+            <button class="theme-btn" data-theme="style-v7.css" type="button">Tema v7</button>
             <button class="theme-btn" data-theme="styles-v2.css" type="button">Tema v2</button>
             <button class="theme-btn" data-theme="styles-v3.css" type="button">Tema v3</button>
             <button class="theme-btn" data-theme="styles-v4.css" type="button">Tema v4</button>
@@ -88,7 +60,7 @@
             var STORAGE_KEY = "escuelita-theme";
             var themeLink = document.getElementById("theme-link");
             var buttons = document.querySelectorAll(".theme-btn");
-            var allowedThemes = ["styles-v2.css", "styles-v3.css", "styles-v4.css", "styles-v5.css"];
+            var allowedThemes = ["style-v7.css", "styles-v2.css", "styles-v3.css", "styles-v4.css", "styles-v5.css"];
 
             function setActiveButton(theme) {
                 buttons.forEach(function (button) {
