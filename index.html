@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Escuelita Divertida</title>
-    <link id="theme-link" rel="stylesheet" href="styles-v2.css">
+    <link id="theme-link" rel="stylesheet" href="styles-v5.css">
     <style>
         .theme-switcher {
             margin-top: 14px;
@@ -45,6 +45,7 @@
             <button class="theme-btn" data-theme="styles-v2.css" type="button">Tema v2</button>
             <button class="theme-btn" data-theme="styles-v3.css" type="button">Tema v3</button>
             <button class="theme-btn" data-theme="styles-v4.css" type="button">Tema v4</button>
+            <button class="theme-btn" data-theme="styles-v5.css" type="button">Tema v5</button>
         </div>
     </header>
 
@@ -87,7 +88,7 @@
             var STORAGE_KEY = "escuelita-theme";
             var themeLink = document.getElementById("theme-link");
             var buttons = document.querySelectorAll(".theme-btn");
-            var allowedThemes = ["styles-v2.css", "styles-v3.css", "styles-v4.css"];
+            var allowedThemes = ["styles-v2.css", "styles-v3.css", "styles-v4.css", "styles-v5.css"];
 
             function setActiveButton(theme) {
                 buttons.forEach(function (button) {

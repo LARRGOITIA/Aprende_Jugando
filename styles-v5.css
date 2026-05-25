@@ -1,8 +1,8 @@
 :root {
-    --bg-top: #fff4e6;
-    --bg-bottom: #dff8f2;
-    --panel: rgba(255, 255, 255, 0.66);
-    --panel-strong: rgba(255, 255, 255, 0.84);
+    --bg-top: #6d4511;
+    --bg-bottom: #21b895;
+    --panel: rgba(154, 16, 16, 0.66);
+    --panel-strong: rgba(44, 182, 78, 0.84);
     --text-main: #17324d;
     --text-soft: #4f6479;
     --line: rgba(23, 50, 77, 0.12);
