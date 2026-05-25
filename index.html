@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Escuelita Divertida</title>
-    <link id="theme-link" rel="stylesheet" href="style-v7.css">
-    <link rel="stylesheet" href="movimiento.css">
+    <link id="theme-link" rel="stylesheet" href="styles-v2.css">
+    <style>
+        .theme-switcher {
+            margin-top: 14px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .theme-btn {
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            border-radius: 999px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.26);
+        }
+
+        .theme-btn.active {
+            background: rgba(255, 255, 255, 0.96);
+            color: #1f2937;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,43 +42,105 @@
         <h1>🎈 ¡Aprende Jugando! 🎈</h1>
         <p>Colores y Números para niños</p>
         <div class="theme-switcher" aria-label="Selector de tema">
-            <button class="theme-btn" data-theme="style-v7.css" type="button">Tema v7</button>
             <button class="theme-btn" data-theme="styles-v2.css" type="button">Tema v2</button>
             <button class="theme-btn" data-theme="styles-v3.css" type="button">Tema v3</button>
             <button class="theme-btn" data-theme="styles-v4.css" type="button">Tema v4</button>
-            <button class="theme-btn" data-theme="styles-v5.css" type="button">Tema v5</button>
         </div>
     </header>
 
-    <div class="container">
-        
-        <h2>🎨 Los Colores</h2>
-        <div class="grid-colores">
-            <div class="color-card" style="background-color: #FF0000;">Rojo</div>
-            <div class="color-card" style="background-color: #0000FF;">Azul</div>
-            <div class="color-card" style="background-color: #008000;">Verde</div>
-            <div class="color-card" style="background-color: #FFFF00; color: black;">Amarillo</div>
-            <div class="color-card" style="background-color: #FF8C00;">Naranja</div>
-            <div class="color-card" style="background-color: #800080;">Morado</div>
-        </div>
+    <main class="container">
+        <section class="hero-grid">
+            <article class="section-card hero-panel">
+                <p class="section-kicker">Nuevo recorrido</p>
+                <h2>Una portada que responde a lo que tocas</h2>
+                <p>La experiencia ahora tiene bloques más claros y acciones directas: filtra colores, encuentra números y responde preguntas rápidas.</p>
+                <div class="hero-pills" aria-label="Características">
+                    <span>Toque</span>
+                    <span>Explora</span>
+                    <span>Juega</span>
+                    <span>Sube puntos</span>
+                </div>
+            </article>
 
-        <hr>
+            <aside class="section-card detail-panel" aria-label="Detalle activo">
+                <p class="section-kicker">Detalle vivo</p>
+                <h2 id="detail-title">Empieza aquí</h2>
+                <p id="detail-text">Haz clic en cualquier color para ver un mensaje más específico.</p>
+                <div class="detail-meta">
+                    <span id="detail-badge">Sin selección</span>
+                    <span id="detail-score">+0</span>
+                </div>
+            </aside>
+        </section>
 
-        <h2>🔢 Los Números</h2>
-        <div class="grid-numeros">
-            <div class="numero-card">1</div>
-            <div class="numero-card">2</div>
-            <div class="numero-card">3</div>
-            <div class="numero-card">4</div>
-            <div class="numero-card">5</div>
-            <div class="numero-card">6</div>
-            <div class="numero-card">7</div>
-            <div class="numero-card">8</div>
-            <div class="numero-card">9</div>
-            <div class="numero-card">10</div>
-        </div>
+        <section id="explorador" class="section-card">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">Explorador de colores</p>
+                    <h2>Colores que se activan</h2>
+                </div>
+                <div class="filter-bar" role="tablist" aria-label="Filtros de color">
+                    <button class="filter-btn active" type="button" data-filter="all">Todos</button>
+                    <button class="filter-btn" type="button" data-filter="calidos">Cálidos</button>
+                    <button class="filter-btn" type="button" data-filter="fríos">Fríos</button>
+                </div>
+            </div>
 
-    </div>
+            <div class="grid-colores" id="color-grid">
+                <button class="color-card" type="button" style="background-color: #FF0000;" data-name="Rojo" data-group="calidos" data-text="Rojo: energía, fuerza y movimiento.">Rojo</button>
+                <button class="color-card" type="button" style="background-color: #0000FF;" data-name="Azul" data-group="fríos" data-text="Azul: calma, agua y cielo.">Azul</button>
+                <button class="color-card" type="button" style="background-color: #008000;" data-name="Verde" data-group="fríos" data-text="Verde: naturaleza, hojas y frescura.">Verde</button>
+                <button class="color-card" type="button" style="background-color: #FFFF00; color: black;" data-name="Amarillo" data-group="calidos" data-text="Amarillo: sol, alegría y brillo.">Amarillo</button>
+                <button class="color-card" type="button" style="background-color: #FF8C00;" data-name="Naranja" data-group="calidos" data-text="Naranja: diversión, calor y creatividad.">Naranja</button>
+                <button class="color-card" type="button" style="background-color: #800080;" data-name="Morado" data-group="fríos" data-text="Morado: imaginación, arte y fantasía.">Morado</button>
+            </div>
+        </section>
+
+        <section id="desafio" class="section-card challenge-grid">
+            <div>
+                <p class="section-kicker">Reto numérico</p>
+                <h2>Encuentra el número correcto</h2>
+                <p id="challenge-text">Pulsa Iniciar reto para generar un objetivo.</p>
+                <p id="challenge-feedback" class="feedback"></p>
+                <div class="challenge-actions">
+                    <button class="action-btn" id="start-challenge" type="button">Iniciar reto</button>
+                    <button class="action-btn secondary" id="next-challenge" type="button">Nuevo reto</button>
+                </div>
+            </div>
+
+            <div class="number-stage">
+                <div class="number-ring" id="target-number">?</div>
+                <div class="grid-numeros" id="number-grid">
+                    <button class="numero-card" type="button" data-number="1">1</button>
+                    <button class="numero-card" type="button" data-number="2">2</button>
+                    <button class="numero-card" type="button" data-number="3">3</button>
+                    <button class="numero-card" type="button" data-number="4">4</button>
+                    <button class="numero-card" type="button" data-number="5">5</button>
+                    <button class="numero-card" type="button" data-number="6">6</button>
+                    <button class="numero-card" type="button" data-number="7">7</button>
+                    <button class="numero-card" type="button" data-number="8">8</button>
+                    <button class="numero-card" type="button" data-number="9">9</button>
+                    <button class="numero-card" type="button" data-number="10">10</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="mini-juego" class="section-card">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">Mini juego</p>
+                    <h2>Responde rápido</h2>
+                </div>
+                <button class="action-btn secondary" id="restart-quiz" type="button">Cambiar pregunta</button>
+            </div>
+
+            <div class="quiz-box">
+                <p class="quiz-question" id="quiz-question"></p>
+                <div class="quiz-options" id="quiz-options" role="group" aria-label="Opciones del mini juego"></div>
+                <p class="feedback" id="quiz-feedback"></p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>Creado para aprender de forma divertida ✨</p>
@@ -60,7 +151,7 @@
             var STORAGE_KEY = "escuelita-theme";
             var themeLink = document.getElementById("theme-link");
             var buttons = document.querySelectorAll(".theme-btn");
-            var allowedThemes = ["style-v7.css", "styles-v2.css", "styles-v3.css", "styles-v4.css", "styles-v5.css"];
+            var allowedThemes = ["styles-v2.css", "styles-v3.css", "styles-v4.css"];
 
             function setActiveButton(theme) {
                 buttons.forEach(function (button) {
@@ -68,28 +159,105 @@
                     button.classList.toggle("active", isActive);
                     button.setAttribute("aria-pressed", isActive ? "true" : "false");
                 });
+
+                colorGrid.querySelectorAll('.color-card').forEach(function (card) {
+                    var matches = filter === 'all' || card.getAttribute('data-group') === filter;
+                    card.hidden = !matches;
+                });
+
+                setStatus(filter === 'all' ? 'Mostrando todos los colores.' : 'Filtrando colores ' + filter + '.');
             }
 
-            function applyTheme(theme) {
-                if (allowedThemes.indexOf(theme) === -1) {
+            function newChallenge() {
+                activeTarget = Math.floor(Math.random() * 10) + 1;
+                targetNumber.textContent = activeTarget;
+                challengeText.textContent = 'Encuentra el número ' + activeTarget + ' en la cuadrícula.';
+                challengeFeedback.textContent = '';
+                setStatus('Nuevo reto listo: busca el ' + activeTarget + '.');
+            }
+
+            function checkNumber(value) {
+                if (!activeTarget) {
+                    challengeFeedback.textContent = 'Primero pulsa Iniciar reto.';
                     return;
                 }
-                themeLink.setAttribute("href", theme);
-                localStorage.setItem(STORAGE_KEY, theme);
-                setActiveButton(theme);
+
+                if (value === activeTarget) {
+                    challengeFeedback.textContent = '¡Correcto! Encontraste el número ' + value + '.';
+                    updatePoints(2);
+                    setStatus('Acertaste el reto numérico.');
+                    newChallenge();
+                } else {
+                    challengeFeedback.textContent = 'Ese no es. Intenta otra vez.';
+                    setStatus('Todavía no, sigue buscando.');
+                }
             }
 
-            var savedTheme = localStorage.getItem(STORAGE_KEY);
-            var initialTheme = allowedThemes.indexOf(savedTheme) !== -1 ? savedTheme : themeLink.getAttribute("href");
-            applyTheme(initialTheme);
+            function renderQuiz(index) {
+                var current = quizDeck[index];
+                quizQuestion.textContent = current.question;
+                quizOptions.innerHTML = '';
+                quizFeedback.textContent = '';
 
-            buttons.forEach(function (button) {
-                button.addEventListener("click", function () {
-                    applyTheme(button.getAttribute("data-theme"));
+                current.options.forEach(function (optionText, optionIndex) {
+                    var button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'quiz-option';
+                    button.textContent = optionText;
+                    button.addEventListener('click', function () {
+                        if (optionIndex === current.correct) {
+                            quizFeedback.textContent = '¡Bien! Esa respuesta es correcta.';
+                            updatePoints(3);
+                            setStatus('Mini juego superado.');
+                        } else {
+                            quizFeedback.textContent = 'Todavía no. Prueba otra opción.';
+                            setStatus('Mini juego: sigue intentando.');
+                        }
+                    });
+                    quizOptions.appendChild(button);
+                });
+            }
+
+            document.querySelectorAll('[data-scroll]').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var target = document.querySelector(button.getAttribute('data-scroll'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
             });
+
+            filterButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    applyFilter(button.getAttribute('data-filter'));
+                });
+            });
+
+            colorGrid.querySelectorAll('.color-card').forEach(function (card) {
+                card.addEventListener('click', function () {
+                    showColorInfo(card);
+                });
+            });
+
+            startChallengeButton.addEventListener('click', newChallenge);
+            nextChallengeButton.addEventListener('click', newChallenge);
+
+            numberButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    checkNumber(Number(button.getAttribute('data-number')));
+                });
+            });
+
+            restartQuizButton.addEventListener('click', function () {
+                currentQuizIndex = Math.floor(Math.random() * quizDeck.length);
+                renderQuiz(currentQuizIndex);
+                setStatus('Nueva pregunta cargada.');
+            });
+
+            renderQuiz(currentQuizIndex);
+            applyFilter('all');
+            setStatus('Empieza por un color para activar la experiencia.');
         })();
     </script>
-
 </body>
 </html>
