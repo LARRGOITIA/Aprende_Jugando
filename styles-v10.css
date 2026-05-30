@@ -1,0 +1,256 @@
+:root {
+    --primary: #ff4d6d;
+    --secondary: #4cc9f0;
+    --accent: #ffd60a;
+    --bg1: #f8f9fa;
+    --bg2: #e0f7fa;
+    --text: #1d3557;
+    --white: #ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height:100vh;
+    color:var(--text);
+    background:
+    linear-gradient(135deg,#e0f7fa,#ffffff,#ffe5ec);
+}
+
+header{
+    padding:40px 20px;
+    text-align:center;
+    color:white;
+    background:linear-gradient(135deg,#ff4d6d,#4cc9f0);
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+    animation:slideDown .8s ease;
+}
+
+header p{
+    font-size:1.2rem;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:30px;
+}
+
+.section-card{
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#e63946;
+}
+
+.section-kicker{
+    color:#4cc9f0;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.hero-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.hero-pills span{
+    background:linear-gradient(135deg,#ff4d6d,#ff758f);
+    color:white;
+    padding:8px 15px;
+    border-radius:50px;
+    font-weight:bold;
+}
+
+.grid-colores{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.color-card{
+    height:160px;
+    border:none;
+    border-radius:20px;
+    color:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.color-card:hover{
+    transform:translateY(-8px) scale(1.05);
+}
+
+.challenge-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.number-ring{
+    width:150px;
+    height:150px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:4rem;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#4cc9f0,#4361ee);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.grid-numeros{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.numero-card{
+    height:80px;
+    border:none;
+    border-radius:15px;
+    font-size:1.8rem;
+    font-weight:bold;
+    cursor:pointer;
+    background:white;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.numero-card:hover{
+    background:#4cc9f0;
+    color:white;
+    transform:scale(1.08);
+}
+
+.action-btn{
+    border:none;
+    padding:12px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(135deg,#ff4d6d,#ff758f);
+    transition:.3s;
+}
+
+.action-btn:hover{
+    transform:translateY(-3px);
+}
+
+.action-btn.secondary{
+    background:linear-gradient(135deg,#4cc9f0,#4361ee);
+}
+
+.quiz-options{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.quiz-option{
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.quiz-option:hover{
+    background:#ffd60a;
+    transform:scale(1.03);
+}
+
+.filter-bar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    cursor:pointer;
+    background:white;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.filter-btn.active{
+    background:#ff4d6d;
+    color:white;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#555;
+}
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:900px){
+    .hero-grid,
+    .challenge-grid{
+        grid-template-columns:1fr;
+    }
+
+    .grid-numeros{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    header h1{
+        font-size:2rem;
+    }
+}
