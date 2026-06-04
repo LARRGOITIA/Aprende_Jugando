@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Jugando v13</title>
-    <link rel="stylesheet" href="styles-v13.css">
-    <script defer src="app-v13.js"></script>
+    <title>Aprende con animalitos</title>
+    <link rel="stylesheet" href="styles-v14.css">
+    <script defer src="app-v14.js"></script>
 </head>
 <body>
     <div class="floating-shapes" aria-hidden="true">
@@ -16,9 +16,9 @@
 
     <header class="top-banner">
         <div class="brand-block">
-            <p class="eyebrow">Version 13</p>
-            <h1>Aprende Jugando</h1>
-            <p class="subtitle">Colores, numeros y minijuegos con una interfaz muy infantil y dinamica.</p>
+            <p class="eyebrow">Version 14</p>
+            <h1><span class="word word-one">Aprende</span> <span class="word word-two">Jugando</span></h1>
+            <p class="subtitle">Animales, colores y numeros.</p>
         </div>
 
         <div class="status-board" aria-label="Marcador general">
@@ -32,75 +32,138 @@
             </div>
             <div class="status-pill bright" id="live-message">Listo para jugar</div>
         </div>
+
+        <button class="options-button" type="button" id="options-toggle" aria-expanded="false" aria-controls="options-dock" aria-label="Opciones">
+            <span>☰</span>
+        </button>
     </header>
+
+    <section class="options-dock" id="options-dock" aria-label="Opciones rapidas" hidden>
+        <button class="dock-chip" type="button" data-panel="panel-animales">🐾</button>
+        <button class="dock-chip" type="button" data-panel="panel-colores">🎨</button>
+        <button class="dock-chip" type="button" data-panel="panel-numeros">🔢</button>
+        <button class="dock-chip" type="button" data-panel="panel-formas">🔺</button>
+        <button class="dock-chip" type="button" data-panel="panel-sonidos">🔊</button>
+    </section>
 
     <main class="page-shell">
         <section class="hero-panel">
             <div class="hero-copy">
-                <p class="section-tag">Sala principal</p>
-                <h2>Explora, toca y gana recompensas</h2>
-                <p>En esta version puedes elegir minijuegos, descubrir colores, buscar numeros y resolver retos rapidos. Todo responde al cursor con brillo y movimiento.</p>
+                <p class="section-tag">Juego para peques</p>
+                <h2>Aprende con animalitos</h2>
+                <p>Todo es grande, simple y visual.</p>
                 <div class="hero-actions">
-                    <button class="cta-button" type="button" data-target="panel-colores">Jugar colores</button>
-                    <button class="cta-button alt" type="button" data-target="panel-numeros">Jugar numeros</button>
-                    <button class="cta-button alt" type="button" data-target="panel-memoria">Jugar memoria</button>
+                    <button class="cta-button" type="button" data-panel="panel-animales">Animales</button>
+                    <button class="cta-button alt" type="button" data-panel="panel-colores">Colores</button>
+                    <button class="cta-button alt" type="button" data-panel="panel-numeros">Numeros</button>
                 </div>
             </div>
 
             <aside class="mascot-card">
-                <div class="mascot-face" aria-hidden="true">🐻</div>
-                <h3 id="focus-title">Amigo explorador</h3>
-                <p id="focus-text">Pulsa un minijuego para activar una nueva aventura.</p>
+                <div class="mascot-face" aria-hidden="true">🐼</div>
+                <h3 id="focus-title">Hola, peque</h3>
+                <p id="focus-text">Toca una tarjeta grande.</p>
                 <div class="mini-chips">
-                    <span>Color</span>
-                    <span>Numero</span>
-                    <span>Memoria</span>
-                    <span>Quiz</span>
+                    <span>🐶</span>
+                    <span>🎨</span>
+                    <span>🔢</span>
+                    <span>⭐</span>
                 </div>
             </aside>
         </section>
 
         <nav class="game-menu" aria-label="Minijuegos disponibles">
-            <button class="game-tab active" type="button" data-target="panel-colores">Colores</button>
-            <button class="game-tab" type="button" data-target="panel-numeros">Numeros</button>
-            <button class="game-tab" type="button" data-target="panel-memoria">Memoria</button>
-            <button class="game-tab" type="button" data-target="panel-quiz">Quiz</button>
+            <button class="game-tab active" type="button" data-panel="panel-animales">Animales</button>
+            <button class="game-tab" type="button" data-panel="panel-colores">Colores</button>
+            <button class="game-tab" type="button" data-panel="panel-numeros">Numeros</button>
+            <button class="game-tab" type="button" data-panel="panel-formas">Formas</button>
+            <button class="game-tab" type="button" data-panel="panel-sonidos">Sonidos</button>
+            <button class="game-tab" type="button" data-panel="panel-quiz">Juego</button>
         </nav>
 
-        <section class="game-panel active" id="panel-colores">
+        <section class="game-panel active" id="panel-animales">
             <div class="panel-head">
                 <div>
-                    <p class="section-tag">Minijuego 01</p>
-                    <h2>Escoge un color</h2>
+                    <p class="section-tag">Animales</p>
+                    <h2>Elige uno</h2>
                 </div>
-                <p class="panel-note" id="color-note">Toca una tarjeta para ver su energia.</p>
+                <p class="panel-note" id="animal-note">Toca un animal.</p>
             </div>
 
-            <div class="color-grid" id="color-grid">
-                <button class="color-card warm" type="button" data-name="Rojo" data-message="Rojo: energia, fuerza y mucha accion.">Rojo</button>
-                <button class="color-card cool" type="button" data-name="Azul" data-message="Azul: calma, cielo y agua tranquila.">Azul</button>
-                <button class="color-card fresh" type="button" data-name="Verde" data-message="Verde: hojas, naturaleza y frescura.">Verde</button>
-                <button class="color-card sun" type="button" data-name="Amarillo" data-message="Amarillo: sol, alegria y brillo.">Amarillo</button>
-                <button class="color-card orange" type="button" data-name="Naranja" data-message="Naranja: diversion, creatividad y calor.">Naranja</button>
-                <button class="color-card purple" type="button" data-name="Morado" data-message="Morado: fantasia, magia e imaginacion.">Morado</button>
+            <div class="animal-grid" id="animal-grid">
+                <button class="animal-card tiger" type="button" data-name="Tigre" data-message="Rugido fuerte">🐯<span>Tigre</span></button>
+                <button class="animal-card panda" type="button" data-name="Panda" data-message="Abrazo suave">🐼<span>Panda</span></button>
+                <button class="animal-card bunny" type="button" data-name="Conejo" data-message="Saltos rapidos">🐰<span>Conejo</span></button>
+                <button class="animal-card duck" type="button" data-name="Pato" data-message="Cua cua">🦆<span>Pato</span></button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-colores">
+            <div class="panel-head">
+                <div>
+                    <p class="section-tag">Colores</p>
+                    <h2>Brilla</h2>
+                </div>
+                <p class="panel-note" id="color-note">Toca un color.</p>
+            </div>
+
+            <div class="animal-grid color-grid" id="color-grid">
+                <button class="animal-card tiger color-card warm" type="button" data-name="Rojo">🔴<span>Rojo</span></button>
+                <button class="animal-card duck color-card sun" type="button" data-name="Amarillo">🟡<span>Amarillo</span></button>
+                <button class="animal-card panda color-card cool" type="button" data-name="Azul">🔵<span>Azul</span></button>
+                <button class="animal-card bunny color-card fresh" type="button" data-name="Verde">🟢<span>Verde</span></button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-formas">
+            <div class="panel-head">
+                <div>
+                    <p class="section-tag">Formas</p>
+                    <h2>Elige</h2>
+                </div>
+                <p class="panel-note" id="shape-note">Toca una forma.</p>
+            </div>
+
+            <div class="animal-grid shape-grid" id="shape-grid">
+                <button class="animal-card shape-card circle" type="button" data-shape="Circulo">⚪<span>Circulo</span></button>
+                <button class="animal-card shape-card square" type="button" data-shape="Cuadrado">🟦<span>Cuadrado</span></button>
+                <button class="animal-card shape-card triangle" type="button" data-shape="Triangulo">🔺<span>Triangulo</span></button>
+                <button class="animal-card shape-card star" type="button" data-shape="Estrella">⭐<span>Estrella</span></button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-sonidos">
+            <div class="panel-head">
+                <div>
+                    <p class="section-tag">Sonidos</p>
+                    <h2>Haz click</h2>
+                </div>
+                <p class="panel-note" id="sound-note">Toca un boton.</p>
+            </div>
+
+            <div class="animal-grid sound-grid" id="sound-grid">
+                <button class="animal-card sound-card" type="button" data-sound="Miau">🐱<span>Miau</span></button>
+                <button class="animal-card sound-card" type="button" data-sound="Guau">🐶<span>Guau</span></button>
+                <button class="animal-card sound-card" type="button" data-sound="Cua">🦆<span>Cua</span></button>
+                <button class="animal-card sound-card" type="button" data-sound="Muu">🐮<span>Muu</span></button>
             </div>
         </section>
 
         <section class="game-panel" id="panel-numeros">
             <div class="panel-head">
                 <div>
-                    <p class="section-tag">Minijuego 02</p>
-                    <h2>Busca el numero correcto</h2>
+                    <p class="section-tag">Numeros</p>
+                    <h2>Busca el numero</h2>
                 </div>
                 <button class="small-button" type="button" id="new-number-round">Nuevo reto</button>
             </div>
 
             <div class="number-stage">
                 <div class="target-bubble">
-                    <span>Objetivo</span>
+                    <span>Busca</span>
                     <strong id="target-number">?</strong>
                 </div>
-                <p class="panel-note" id="number-note">Pulsa Nuevo reto para empezar.</p>
+                <p class="panel-note" id="number-note">Toca el numero igual.</p>
                 <div class="number-grid" id="number-grid">
                     <button class="number-button" type="button" data-number="1">1</button>
                     <button class="number-button" type="button" data-number="2">2</button>
@@ -119,21 +182,21 @@
         <section class="game-panel" id="panel-memoria">
             <div class="panel-head">
                 <div>
-                    <p class="section-tag">Minijuego 03</p>
-                    <h2>Encuentra las parejas</h2>
+                    <p class="section-tag">Sorpresa</p>
+                    <h2>Cartas iguales</h2>
                 </div>
                 <button class="small-button" type="button" id="restart-memory">Revolver tarjetas</button>
             </div>
 
-            <p class="panel-note" id="memory-note">Gira dos tarjetas y busca las parejas iguales.</p>
+            <p class="panel-note" id="memory-note">Busca dos iguales.</p>
             <div class="memory-grid" id="memory-grid" aria-label="Tarjetas de memoria"></div>
         </section>
 
         <section class="game-panel" id="panel-quiz">
             <div class="panel-head">
                 <div>
-                    <p class="section-tag">Minijuego 04</p>
-                    <h2>Responde rapido</h2>
+                    <p class="section-tag">Juego rapido</p>
+                    <h2>Escucha y toca</h2>
                 </div>
                 <button class="small-button" type="button" id="next-quiz">Otra pregunta</button>
             </div>
@@ -147,7 +210,7 @@
     </main>
 
     <footer class="page-footer">
-        <p>Hecho para aprender jugando con mucho color y brillo.</p>
+        <p>Animales, colores y numeros.</p>
     </footer>
 </body>
 </html>
