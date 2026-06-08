@@ -3,158 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Escuelita Divertida</title>
-
-    <link id="theme-link" rel="stylesheet" href="styles-v15.css">
-
-    <style>
-        .theme-switcher {
-            margin-top: 14px;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .theme-btn {
-            border: 2px solid rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.15s ease, background-color 0.15s ease;
-        }
-
-        .theme-btn:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.26);
-        }
-
-        .theme-btn.active {
-            background: rgba(255, 255, 255, 0.96);
-            color: #1f2937;
-        }
-    </style>
+    <title>Mi Escuelita Divertida ✨</title>
+    <link rel="stylesheet" href="styles_V15.css"> 
 </head>
 <body>
 
-    <header>
-        <h1>🎈 ¡Aprende Jugando! 🎈</h1>
-        <p>Colores y Números para niños</p>
-        <div class="theme-switcher" aria-label="Selector de tema">
-            <button class="theme-btn" data-theme="styles-v2.css" type="button">Tema v2</button>
-            <button class="theme-btn" data-theme="styles-v3.css" type="button">Tema v3</button>
-            <button class="theme-btn" data-theme="styles-v4.css" type="button">Tema v4</button>
+    <div class="sky-layer">
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+    </div>
+
+    <div class="animal-wall">
+        <div class="wall-animal wall-animal-one">🐯</div>
+        <div class="wall-animal wall-animal-two">🦁</div>
+        <div class="wall-animal wall-animal-three">🐼</div>
+        <div class="wall-animal wall-animal-four">🐰</div>
+    </div>
+
+    <header class="top-banner">
+        <div class="brand-block">
+            <h1>
+                <span class="float-word a">🎈</span>
+                <span class="float-word b">¡Mi Escuelita</span>
+                <span class="float-word c">Divertida🎈</span>
+            </h1>
+            <p class="subtitle">Colores, Animales y Números</p>
         </div>
 
-        <button class="options-button" type="button" id="options-toggle" aria-expanded="false" aria-controls="options-dock" aria-label="Opciones">
+        <div class="status-board">
+            <div class="status-pill">
+                <span>PUNTOS</span>
+                <strong id="score-value">0</strong>
+            </div>
+            <div class="status-pill soft">
+                <span>ESTRELLAS</span>
+                <strong id="star-value">0</strong>
+            </div>
+            <div class="status-pill bright" id="live-message">
+                ¡Hola!
+            </div>
+        </div>
+
+        <button class="options-button" type="button" id="options-toggle" aria-expanded="false" aria-controls="options-dock">
             <span>☰</span>
         </button>
     </header>
 
-    <main class="container">
-        <section class="hero-grid">
-            <article class="section-card hero-panel">
-                <p class="section-kicker">Nuevo recorrido</p>
-                <h2>Una portada que responde a lo que tocas</h2>
-                <p>La experiencia ahora tiene bloques más claros y acciones directas: filtra colores, encuentra números y responde preguntas rápidas.</p>
-                <div class="hero-pills" aria-label="Características">
-                    <span>Toque</span>
-                    <span>Explora</span>
-                    <span>Juega</span>
-                    <span>Sube puntos</span>
-                </div>
-            </article>
+    <div class="options-dock" id="options-dock">
+        <p style="width:100%; text-align:center; margin:0; font-size:0.85rem; color:var(--muted);">Cambiar de juego rápido:</p>
+        <button class="dock-chip" data-panel="panel-animales" title="Animales">🐯</button>
+        <button class="dock-chip" data-panel="panel-colores" title="Colores">🎨</button>
+        <button class="dock-chip" data-panel="panel-numeros" title="Números">🔢</button>
+        <button class="dock-chip" data-panel="panel-formas" title="Formas">⭐</button>
+        <button class="dock-chip" data-panel="panel-sonidos" title="Sonidos">🔊</button>
+        <button class="dock-chip" data-panel="panel-quiz" title="Preguntas">🧠</button>
+    </div>
 
-            <aside class="section-card detail-panel" aria-label="Detalle activo">
-                <p class="section-kicker">Detalle vivo</p>
-                <h2 id="detail-title">Empieza aquí</h2>
-                <p id="detail-text">Haz clic en cualquier color para ver un mensaje más específico.</p>
-                <div class="detail-meta">
-                    <span id="detail-badge">Sin selección</span>
-                    <span id="detail-score">+0</span>
-                </div>
-            </aside>
+    <main class="page-shell">
+        
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <span class="eyebrow" id="focus-title">Cargando...</span>
+                <h2 id="focus-text">¡Prepárate para jugar!</h2>
+                <div class="hero-emoji-line">🦁 🎨 🔢 ✨</div>
+            </div>
+            <div class="mascot-card">
+                <div class="mascot-face mascot-bounce">🚀</div>
+                <span class="section-tag">Tu Guía</span>
+            </div>
         </section>
 
-        <section id="explorador" class="section-card">
-            <div class="section-head">
+        <nav class="game-menu">
+            <button class="game-tab active" data-panel="panel-animales">🐯 Animales</button>
+            <button class="game-tab" data-panel="panel-colores">🎨 Colores</button>
+            <button class="game-tab" data-panel="panel-numeros">🔢 Números</button>
+            <button class="game-tab" data-panel="panel-formas">⭐ Formas</button>
+            <button class="game-tab" data-panel="panel-sonidos">🔊 Sonidos</button>
+            <button class="game-tab" data-panel="panel-quiz">🧠 Trivia</button>
+        </nav>
+
+        <section class="game-panel active" id="panel-animales">
+            <div class="panel-head">
+                <h2>Mundo Animal</h2>
+                <p class="panel-note" id="animal-note">Toca un animal para escuchar su mensaje.</p>
+            </div>
+            <div class="animal-grid big-grid" id="animal-grid">
+                <button class="animal-card tiger float-pop" data-name="Tigre" data-message=".">🐯</button>
+                <button class="animal-card panda float-pop" data-name="Panda" data-message=".">🐼</button>
+                <button class="animal-card bunny float-pop" data-name="Conejo" data-message=".">🐰</button>
+                <button class="animal-card duck float-pop" data-name="Pato" data-message=".">🦆</button>
+                <button class="animal-card lion float-pop" data-name="León" data-message=".">🦁</button>
+                <button class="animal-card fish float-pop" data-name="Pez" data-message=".">🐟</button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-colores">
+            <div class="panel-head">
+                <h2>Explorador de Colores</h2>
+                <p class="panel-note" id="color-note">¿Cuál es tu color favorito?</p>
+            </div>
+            <div class="animal-grid big-grid" id="color-grid">
+                <button class="animal-card color-card warm" data-name="Rojo">🔴</button>
+                <button class="animal-card color-card sun" data-name="Amarillo">🟡</button>
+                <button class="animal-card color-card cool" data-name="Azul">🔵</button>
+                <button class="animal-card color-card fresh" data-name="Verde">🟢</button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-numeros">
+            <div class="panel-head">
                 <div>
-                    <p class="section-kicker">Explorador de colores</p>
-                    <h2>Colores que se activan</h2>
+                    <h2>Reto Numérico</h2>
+                    <p class="panel-note" id="number-note">Encuentra el número correcto.</p>
                 </div>
-                <div class="filter-bar" role="tablist" aria-label="Filtros de color">
-                    <button class="filter-btn active" type="button" data-filter="all">Todos</button>
-                    <button class="filter-btn" type="button" data-filter="calidos">Cálidos</button>
-                    <button class="filter-btn" type="button" data-filter="fríos">Fríos</button>
+                <button class="cta-button alt" id="new-number-round" type="button">Nuevo Número</button>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                <div class="target-bubble">
+                    <span>Busca el:</span>
+                    <strong id="target-number">?</strong>
                 </div>
-            </div>
-
-            <div class="grid-colores" id="color-grid">
-                <button class="color-card" type="button" style="background-color: #FF0000;" data-name="Rojo" data-group="calidos" data-text="Rojo: energía, fuerza y movimiento.">Rojo</button>
-                <button class="color-card" type="button" style="background-color: #0000FF;" data-name="Azul" data-group="fríos" data-text="Azul: calma, agua y cielo.">Azul</button>
-                <button class="color-card" type="button" style="background-color: #008000;" data-name="Verde" data-group="fríos" data-text="Verde: naturaleza, hojas y frescura.">Verde</button>
-                <button class="color-card" type="button" style="background-color: #FFFF00; color: black;" data-name="Amarillo" data-group="calidos" data-text="Amarillo: sol, alegría y brillo.">Amarillo</button>
-                <button class="color-card" type="button" style="background-color: #FF8C00;" data-name="Naranja" data-group="calidos" data-text="Naranja: diversión, calor y creatividad.">Naranja</button>
-                <button class="color-card" type="button" style="background-color: #800080;" data-name="Morado" data-group="fríos" data-text="Morado: imaginación, arte y fantasía.">Morado</button>
-            </div>
-        </section>
-
-        <section id="desafio" class="section-card challenge-grid">
-            <div>
-                <p class="section-kicker">Reto numérico</p>
-                <h2>Encuentra el número correcto</h2>
-                <p id="challenge-text">Pulsa Iniciar reto para generar un objetivo.</p>
-                <p id="challenge-feedback" class="feedback"></p>
-                <div class="challenge-actions">
-                    <button class="action-btn" id="start-challenge" type="button">Iniciar reto</button>
-                    <button class="action-btn secondary" id="next-challenge" type="button">Nuevo reto</button>
-                </div>
-            </div>
-            <div class="number-stage">
-                <div class="number-ring" id="target-number">?</div>
-                <div class="grid-numeros" id="number-grid">
-                    <button class="numero-card" type="button" data-number="1">1</button>
-                    <button class="numero-card" type="button" data-number="2">2</button>
-                    <button class="numero-card" type="button" data-number="3">3</button>
-                    <button class="numero-card" type="button" data-number="4">4</button>
-                    <button class="numero-card" type="button" data-number="5">5</button>
-                    <button class="numero-card" type="button" data-number="6">6</button>
-                    <button class="numero-card" type="button" data-number="7">7</button>
-                    <button class="numero-card" type="button" data-number="8">8</button>
-                    <button class="numero-card" type="button" data-number="9">9</button>
-                    <button class="numero-card" type="button" data-number="10">10</button>
+                <div class="number-grid" id="number-grid">
+                    <button class="number-button" type="button" data-number="1">1</button>
+                    <button class="number-button" type="button" data-number="2">2</button>
+                    <button class="number-button" type="button" data-number="3">3</button>
+                    <button class="number-button" type="button" data-number="4">4</button>
+                    <button class="number-button" type="button" data-number="5">5</button>
+                    <button class="number-button" type="button" data-number="6">6</button>
+                    <button class="number-button" type="button" data-number="7">7</button>
+                    <button class="number-button" type="button" data-number="8">8</button>
+                    <button class="number-button" type="button" data-number="9">9</button>
+                    <button class="number-button" type="button" data-number="10">10</button>
                 </div>
             </div>
         </section>
 
-        <section id="mini-juego" class="section-card">
-            <div class="section-head">
-                <div>
-                    <p class="section-kicker">Mini juego</p>
-                    <h2>Responde rápido</h2>
-                </div>
-                <button class="action-btn secondary" id="restart-quiz" type="button">Cambiar pregunta</button>
+        <section class="game-panel" id="panel-formas">
+            <div class="panel-head">
+                <h2>Figuras Geométricas</h2>
+                <p class="panel-note" id="shape-note">Toca una forma.</p>
+            </div>
+            <div class="animal-grid big-grid" id="shape-grid">
+                <button class="animal-card shape-card circle" data-shape="Círculo">⚪</button>
+                <button class="animal-card shape-card square" data-shape="Cuadrado">🟦</button>
+                <button class="animal-card shape-card triangle" data-shape="Triángulo">🔺</button>
+                <button class="animal-card shape-card star" data-shape="Estrella">⭐</button>
+            </div>
+        </section>
+
+        <section class="game-panel" id="panel-sonidos">
+            <div class="panel-head">
+                <h2>Efectos de Sonido Reales</h2>
+                <p class="panel-note" id="sound-note">¡Haz clic para escuchar el sonido de internet!</p>
+            </div>
+            <div class="animal-grid big-grid" id="sound-grid">
+                <button class="animal-card sound-card" data-sound="carro" data-speak="Automóvil">🚗</button>
+                <button class="animal-card sound-card" data-sound="campana" data-speak="Campana">🔔</button>
+                <button class="animal-card sound-card" data-sound="tambor" data-speak="Tambor">🥁</button>
+                <button class="animal-card sound-card" data-sound="reloj" data-speak="Reloj">⏰</button>
             </div>
         </section>
 
         <section class="game-panel" id="panel-quiz">
             <div class="panel-head compact">
-                <div><p class="section-tag">Juego</p></div>
-                <button class="small-button" type="button" id="next-quiz">↻</button>
+                <h2>Preguntas Rápidas</h2>
+                <button class="small-button" type="button" id="next-quiz">Siguiente Pregunta ↻</button>
             </div>
             <div class="quiz-box">
-                <p class="quiz-question" id="quiz-question"></p>
-                <div class="quiz-options" id="quiz-options" role="group" aria-label="Opciones del quiz"></div>
-                <p class="panel-note" id="quiz-feedback"></p>
+                <p class="quiz-question" id="quiz-question">Cargando pregunta...</p>
+                <div class="quiz-options" id="quiz-options"></div>
+                <p class="panel-note" id="quiz-feedback" style="font-weight: bold; font-size: 1.2rem; text-align: center; color: var(--success);"></p>
             </div>
         </section>
+
     </main>
 
-    <footer>
+    <footer class="page-footer">
         <p>Creado para aprender de forma divertida ✨</p>
     </footer>
+
+    <script src="script_V15.js"></script>
 </body>
 </html>
