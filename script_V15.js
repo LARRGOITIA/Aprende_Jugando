@@ -141,13 +141,35 @@
     }
 
     // SINTESIS DE VOZ RELAJADA Y PAUSADA
+    function getFemaleVoice() {
+        if (!('speechSynthesis' in window)) return null;
+        var voices = window.speechSynthesis.getVoices();
+        var selected = voices.find(function (voice) {
+            return /^es(?:-|_)?/i.test(voice.lang) && /female|woman|femenina|Mar[íi]a|Luc[ií]a|Sof[ií]a|Laura|Isabel|Catalina|Ana|Clara|Marta|Carla|Elena|Paula|Valeria/i.test(voice.name + ' ' + voice.voiceURI);
+        });
+        if (!selected) {
+            selected = voices.find(function (voice) {
+                return /^es(?:-|_)?/i.test(voice.lang) && /female|woman|femenina/i.test(voice.name + ' ' + voice.voiceURI);
+            });
+        }
+        if (!selected) {
+            selected = voices.find(function (voice) { return /^es(?:-|_)?/i.test(voice.lang); });
+        }
+        return selected || voices[0] || null;
+    }
+
     function sayText(text) {
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); 
+            window.speechSynthesis.cancel();
             var utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'es-MX'; 
-            utterance.rate = 1.50;    // Velocidad pausada y dulce
-            utterance.pitch = 1.70;   // Tono sereno y calmado
+            utterance.lang = 'es-MX';
+            utterance.rate = 1.4;    // Velocidad ligeramente más natural
+            utterance.pitch = 2.15;   // Tono femenino más marcado
+            utterance.volume = 1;
+            var voice = getFemaleVoice();
+            if (voice) {
+                utterance.voice = voice;
+            }
             window.speechSynthesis.speak(utterance);
         }
     }
