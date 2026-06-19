@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Escuelita Divertida ✨</title>
-    <link rel="stylesheet" href="styles_V15_1.css"> 
+    <link rel="stylesheet" href="styles_V15_2.css"> 
 </head>
 <body>
 
@@ -82,6 +82,28 @@
             <button class="game-tab" data-panel="panel-sonidos">🔊 Sonidos</button>
             <button class="game-tab" data-panel="panel-quiz">🧠 Trivia</button>
         </nav>
+
+        <div class="score-table-card">
+            <table class="score-table">
+                <caption>Puntos por respuestas correctas</caption>
+                <thead>
+                    <tr>
+                        <th>Juego</th>
+                        <th>Correctas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Números</td>
+                        <td id="numbers-score">0</td>
+                    </tr>
+                    <tr>
+                        <td>Trivia</td>
+                        <td id="trivia-score">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <section class="game-panel active" id="panel-animales">
             <div class="panel-head">

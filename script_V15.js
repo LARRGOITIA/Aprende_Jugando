@@ -18,6 +18,8 @@
     var shapeGrid = document.getElementById('shape-grid');
     var soundGrid = document.getElementById('sound-grid');
     var numberGrid = document.getElementById('number-grid');
+    var numberScoreCell = document.getElementById('numbers-score');
+    var quizScoreCell = document.getElementById('trivia-score');
     var panels = document.querySelectorAll('.game-panel');
     var tabs = document.querySelectorAll('[data-panel]');
     var optionsToggle = document.getElementById('options-toggle');
@@ -28,6 +30,8 @@
     var score = 0;
     var stars = 0;
     var targetValue = null;
+    var numberCorrectCount = 0;
+    var quizCorrectCount = 0;
     var optionsOpen = false;
     var currentQuiz = null;
     var activePopTimer = null;
@@ -163,6 +167,11 @@
         if (message) liveMessage.textContent = message;
     }
 
+    function updateScoreTable() {
+        if (numberScoreCell) numberScoreCell.textContent = String(numberCorrectCount);
+        if (quizScoreCell) quizScoreCell.textContent = String(quizCorrectCount);
+    }
+
     function setFocus(title, text) {
         focusTitle.textContent = title;
         focusText.textContent = text;
@@ -234,7 +243,9 @@
             if (value === targetValue) {
                 playChimeSound(880); 
                 numberNote.textContent = '¡Muy bien!';
-                updateHud(2, 1, '¡Ganaste!');
+                numberCorrectCount += 1;
+                updateScoreTable();
+                updateHud(1, 1, '¡Ganaste!');
                 sayText("Qué inteligente eres... Encontraste el número... " + value);
                 setTimeout(startNumberRound, 2000);
                 return;
@@ -303,7 +314,9 @@
                 if (optionIndex === currentQuiz.correct) {
                     playChimeSound(783.99);
                     quizFeedback.textContent = currentQuiz.reward;
-                    updateHud(3, 1, '¡Correcto!');
+                    quizCorrectCount += 1;
+                    updateScoreTable();
+                    updateHud(1, 1, '¡Correcto!');
                     sayText(currentQuiz.reward);
                     return;
                 }
